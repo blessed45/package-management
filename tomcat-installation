@@ -1,0 +1,44 @@
+# AWS Acccount.
+# Create Security Group and open Required ports. 8080 
+# Create Redhat EC2 T2.medium Instance with 4GB of RAM.
+# Attach Security Group to EC2 Instance.
+# Install java openJDK 1.8+
+
+
+
+sudo hostnamectl set-hostname tomcat
+sudo su - ec2-user
+
+cd /opt
+sudo yum install git wget -y
+sudo yum install java-1.8.0-openjdk-devel -y
+sudo wget  https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.80/bin/apache-tomcat-9.0.80.zip
+sudo unzip apache-tomcat-9.0.80.zip
+sudo rm -rf apache-tomcat-9.0.80.zip
+sudo mv apache-tomcat-9.0.80.zip
+sudo chmod 777 -R /opt/tomcat9
+sudo chown ec2-user -R /opt/tomcat9
+sh /opt/tomcat9/bin/startup.sh
+sudo ln -s /opt/tomcat9/bin/startup.sh /usr/bin/starttomcat
+sudo ln -s /opt/tomcat9/bin/shutdown.sh /usr/bin/stoptomcat
+starttomcat
+
+#2. Start of tomcat configuration 
+
+#Tomcat server configuration:
+find / -name server.xml context.xml
+vim /opt/tomcat9/conf/server.xml
+vi /opt/tomcat9/webapps/manager/META-INF/context.xml
+vi /opt/tomcat9/conf/tomcat-user.xml  # to add user
+
+	<user username="landmark" password="admin" roles="manager-gui,admin-gui"/>
+	
+
+/opt/tomcat9/conf/context.xml
+
+ vi /opt/tomcat9/webapps/manager/META-INF/context.xml
+  
+  vi /opt/tomcat9/conf/tomcat-user.xml  # to add user
+  
+	
+	username YourName password=PassWord   roles=manager-gui
