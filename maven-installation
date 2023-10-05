@@ -76,7 +76,7 @@ Check again to be sure that the .zip file was deleted by running,
 
 You will now see that you are having only one file there with a blue colouration,
 Rename the file to a more portable name , 
-for example , msa -----> by running the command,
+for example , maven -----> by running the command,
 
                  sudo mv apache-maven-3.9.4/ maven
 
