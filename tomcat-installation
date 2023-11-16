@@ -28,7 +28,7 @@ starttomcat
 #Tomcat server configuration:
 find / -name server.xml context.xml
 vim /opt/tomcat9/conf/server.xml
-vi /opt/tomcat9/webapps/manager/META-INF/context.xml
+vi /opt/tomcat9/webapps/manager/META-INF/context.xml # comment on it
 vi /opt/tomcat9/conf/tomcat-user.xml  # to add user
 
 	<user username="atango" password="admin" roles="manager-gui,admin-gui"/>
