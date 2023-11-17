@@ -18,27 +18,25 @@ sudo rm -rf apache-tomcat-10.1.16.tar.gz
 sudo mv apache-tomcat-10.1.16 tomcat9
 sudo chmod 777 -R /opt/tomcat9
 sudo chown ec2-user -R /opt/tomcat9
-sh /opt/tomcat9/bin/startup.sh
-sudo ln -s /opt/tomcat9/bin/startup.sh /usr/bin/starttomcat
+sh /opt/tomcat9/bin/startup.sh   # Startup tomcat
+sudo ln -s /opt/tomcat9/bin/startup.sh /usr/bin/starttomcat # soft link to start tomcat from anyhwere
 sudo ln -s /opt/tomcat9/bin/shutdown.sh /usr/bin/stoptomcat
 starttomcat
 
 #2. Start of tomcat configuration 
 
 #Tomcat server configuration:
-find / -name server.xml context.xml
+
 vim /opt/tomcat9/conf/server.xml   # if you want to change tomcat port number
-vi /opt/tomcat9/webapps/manager/META-INF/context.xml   # comment on it
+
+vi /opt/tomcat9/webapps/manager/META-INF/context.xml   # comment on it to enable external tomcat mgt access
+
 vi /opt/tomcat9/conf/tomcat-user.xml  # to add user
 
-	<user username="atango" password="admin" roles="manager-gui,admin-gui"/>
+# Add user as bellow to enable user manage tomcat using GUI
+# Note, you can create as many users as you like and assign management access to them
+
+<user username="atango" password="admin" roles="manager-gui,admin-gui,mangers-script"/>
 	
 
-/opt/tomcat9/conf/context.xml
 
- vi /opt/tomcat9/webapps/manager/META-INF/context.xml
-  
-  vi /opt/tomcat9/conf/tomcat-user.xml  # to add user
-  
-	
-	username YourName password=PassWord   roles=manager-gui
