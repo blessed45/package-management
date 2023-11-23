@@ -1,0 +1,69 @@
+# Synthax of how a scripted jenkinsfile is develope is as follows
+
+node{
+    stage('1.CloneCode'){}
+    stage('2.mvnBuild'){}
+    stage('3.CodeQuality'){}
+    stage('4.UploadArtifacts'){}
+    stage('5.Deploy2UAT'){}
+    stage('6.6ManualApproval'){}
+    stage('7.Deploy2Prod'){}
+    stage('8.emailNotification'){}
+}
+
+
+# Here we have a developed scripted jenkins-file
+# Copy, edit and run the scirpt at any time
+# Make sure you follow the instauctions on the commented lines
+
+node{
+    def mavenHome = tool name: 'downloaded-maven-version in jenkins' 
+   // replace with the version of maven you downloaded in your jenkins enviroment
+    stage('1.CloneCode'){
+         git "project repo-url"
+}
+    stage('2.mvnBuild'){
+         sh "${mavenHome}/bin/mvn clean pacakge"
+}
+    stage('3.CodeQuality'){
+         sh "${mavenHome}/bin/mvn sonar:sonar"
+         //edit project pom.xml propertiestag with sonarQube server details
+}
+    stage('4.uploadArtifacts'){
+         sh "${mavenHome}/bin/mvn deploy"
+         //edit pom.xml distributionManagementTAG with Nexus-repository details
+         //edit settings.xml with nexus-user login credentials in the jenkins server
+}
+    stage('5.Deploy2UAT'){
+         //use deploy-to-container plugin via pipeline syntax
+         //create deploy adapters, copy and paste as below
+         deploy adapters: [tomcat9(credentialsId: 'tomcat-credentials', path: '', url: 'http://34.219.51.216:8177/')], contextPath: null, war: 'target/*war' // Note; this is how applications are deployed to tomcat in pipeline projects
+}
+    stage('6.ManualApproval'){
+         sh "echo 'Please review the application performance' "
+         timeout(time:24, unit:'HOURS') {
+         input message: 'Application ready for deployment, Please review and approve'
+      } 
+}
+    stage('7,Deploy2Prod'){
+         sh "echo 'Deploy application to the customers/production' " 
+         deploy adapters: [tomcat9(credentialsId: 'tomcat-credentials', path: '', url: 'http://34.219.51.216:8177/')], contextPath: null, war: 'target/*war'
+     
+}
+    stage('8.APM'){
+        sh "echo 'monitoring and observation and alerting' "
+        sh "echo 'application performance Monitoring in progress' "
+}
+    stage('9.EmailNotification'){
+         sh "echo 'notify the team for unusual accurances' "
+         sh "echo 'notify the team if the applications are down' "
+         sh "echo 'notify the team if the latency is higher that expected' "
+         emailext body: '''Hi Team,
+      
+The build and Deployment status for [ClientName] follows.
+
+Regards,
+Atango Technologies ''', recipientProviders: [buildUser(), contributor(), developers(), requestor()], subject: 'build and deployment status', to: 'atango.infotech@gmail.com'
+
+    }
+}
