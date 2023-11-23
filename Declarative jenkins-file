@@ -1,0 +1,108 @@
+Declarative Jenkinsfile:
+=========================
+# The declarative file has some few additions but the stages
+  section remain the same as that for scripted files.  
+
+pipeline{
+    agent any   
+    tools{}
+    options{}
+    triggers{}
+    stages{
+      stage('1.CloneCode'){}
+      stage('2.mvnBuild'){}
+      stage('3.CodeQuality'){}
+      stage('4.UploadArtifacts'){}
+      stage('5.Deploy2UAT'){}
+      stage('6.6ManualApproval'){}
+      stage('7.Deploy2Prod'){}
+      stage('8.emailNotification'){}
+    }
+    post{}
+}
+
+
+# Below is the developed declarative jenkinsfile
+# Copy and edit the file to suit you requirements
+
+pipeline{
+    agent any 
+    tools{
+        maven 'maven3.9.4'
+    }
+    //options{}
+    //triggers{}
+    stages{
+      stage('1.CloneCode'){
+        steps{
+            sh "echo 'cloning the latest application version' "
+            git "https://github.com/LandmakTechnology/maven-web-application"
+        }
+      }
+      stage('2.mvnBuild'){
+        steps{
+          sh "echo 'running JUnit-test-cases' "
+          sh "echo 'testing must passed to create artifacts ' "
+          sh "mvn clean package"             
+        }
+      }
+      stage('3.CodeQuality'){
+        steps{
+          sh "echo 'Perfoming CodeQualityAnalysis' "
+          //sh "mvn sonar:sonar"              
+        }
+      }
+      stage('4.UploadArtifacts'){
+        steps{
+          sh "mvn deploy"   
+        }
+      }
+      stage('5.Deploy2UAT'){
+        steps{
+            deploy adapters: [tomcat9(credentialsId: 'tomcat-credentials', path: '', url: 'http://34.219.51.216:8177/')], contextPath: null, war: 'target/*war'
+        }
+      }
+      stage('6.ManualApproval'){
+        steps{
+          sh "echo 'Please review the application performance' "
+          timeout(time:24, unit:'HOURS') {
+          input message: 'Application ready for deployment, Please review and approve'
+      }  
+        }
+      }
+      stage('7.Deploy2Prod'){
+        steps{
+            deploy adapters: [tomcat9(credentialsId: 'tomcat-credentials', path: '', url: 'http://34.219.51.216:8177/')], contextPath: null, war: 'target/*war'
+         }
+      }
+    }
+    post{
+        always{
+  emailtext body: '''Hi Team,
+
+  The build and Deployment status for is a success.
+
+  Regards,
+  Atango Technologies ''', recipientProviders: [buildUser(), contributor(), developers(), requestor()], subject: 'build and deployment status', to: 'atango.infotech@gmail.com'
+
+        }
+        success{
+  emailtext body: '''Hi Team,
+
+  The build and Deployment is a success.
+
+  Regards,
+  Atango Technologies ''', recipientProviders: [buildUser(), contributor(), developers(), requestor()], subject: 'build and deployment status', to: 'atango.infotech@gmail.com'
+
+        }
+        failure{
+  emailtext body: '''Hi Team,
+
+  The build and Deployment failed.
+
+  Regards,
+  Atango Technologies ''', recipientProviders: [buildUser(), contributor(), developers(), requestor()], subject: 'build and deployment status', to: 'atango.infotech@gmail.com'
+
+        }
+    }
+}
