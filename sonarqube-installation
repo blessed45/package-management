@@ -14,6 +14,8 @@ sudo su - sonar
 
 sudo passwd sonar
 sudo sed -i "/^[^#]*PasswordAuthentication[[:space:]]no/c\PasswordAuthentication yes" /etc/ssh/sshd_config
+# Or use the below command also
+# sudo sed -i 's/PasswordAuthentication no/PasswordAuthentication yes/g' /etc/ssh/sshd_config
 sudo service sshd restart
 cd /opt
 sudo yum -y install unzip wget git
