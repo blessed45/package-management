@@ -31,7 +31,7 @@ vim /opt/tomcat9/conf/server.xml   # if you want to change tomcat port number
 
 vi /opt/tomcat9/webapps/manager/META-INF/context.xml   # comment on it to enable external tomcat mgt access
 
-vi /opt/tomcat9/conf/tomcat-user.xml  # to add user
+vi /opt/tomcat9/conf/tomcat-users.xml  # to add user
 
 # Add user as bellow to enable user manage tomcat using GUI
 # Note, you can create as many users as you like and assign management access to them
