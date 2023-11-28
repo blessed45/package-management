@@ -275,6 +275,7 @@ sudo mv apache-maven-3.9.4/ maven
 
 # vi INTO THE CONFIGURATION FILE AND DEFINE THE MAVEN HOME DIRECTORY
 #  MAKE SURE YOU PASTE THE PATH IN BETWEEN TWO COMMENTS
+# NOTE: cd out of /opt before doing this
 
 vi ~/.bash_profile  # and add the lines below
 export M2_HOME=/opt/maven
