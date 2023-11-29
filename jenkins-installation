@@ -55,5 +55,5 @@ sudo systemctl daemon-reload
 sudo systemctl enable jenkins
 sudo systemctl start jenkins
 sudo systemctl status jenkins
-echo "echo of jenkins installation"
+echo "end of jenkins installation"
 sudo su - ec2-user
