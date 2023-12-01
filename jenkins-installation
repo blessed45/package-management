@@ -9,9 +9,9 @@ Install java openJDK 1.8+ for SonarQube version 7.8
 Install Java JDK 1.8+ as Jenkins pre-requisit
 Install other softwares - git, unzip and wget
 
-sudo hostnamectl set-hostname ci
+sudo hostnamectl set-hostname jenkins
 sudo yum -y install unzip wget tree git
-sudo yum install java-11-openjdk -y
+sudo yum install java-11-openjdk-devel java-1.8.0-openjdk-devel -y
 
 Add Jenkins Repository and key
 
