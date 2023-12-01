@@ -36,7 +36,6 @@ vi /opt/tomcat9/conf/tomcat-users.xml  # to add user
 # Add user as bellow to enable user manage tomcat using GUI
 # Note, you can create as many users as you like and assign management access to them
 
-<user username="atango" password="admin" roles="manager-gui,admin-gui,mangers-script"/>
-	
+<user username="atango" password="admin" roles="manager-gui,admin-gui,manager-script"/>
 
 
