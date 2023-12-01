@@ -7,10 +7,10 @@ If you’re looking to have Tomcat on RHEL/CentOS 7, follow this article to Inst
 Step 1: Installing Java on RHEL 8
 To install Java on RHEL 8, first, update the system packages and install the default available version of Java 8 or Java 11 using the following dnf commands as shown.
 
-# dnf update
-# dnf install java-1.8.0-openjdk-devel  	#install JDK 8
+# sudo dnf update
+# sudo dnf install java-1.8.0-openjdk-devel  	#install JDK 8
 OR
-# dnf install java-11-openjdk-devel		#install JDK 11
+# sudo dnf install java-11-openjdk-devel		#install JDK 11
 
 Once the installation finishes, you can verify the installed Java version on the system using the following command.
 
@@ -23,9 +23,9 @@ If you want to verify the version, head over to the official Apache download pag
 https://tomcat.apache.org/download-90.cgi
 Alternatively, you can download the latest version of Apache Tomcat using the following wget command and set up it as shown.
 # cd /opt
-# wget http://www-us.apache.org/dist/tomcat/tomcat-9/v9.0.24/bin/apache-tomcat-9.0.24.tar.gz
-# tar -xvf apache-tomcat-9.0.24.tar.gz
-# mv apache-tomcat-9.0.24 tomcat9
+# sudo wget http://www-us.apache.org/dist/tomcat/tomcat-9/v9.0.24/bin/apache-tomcat-9.0.24.tar.gz
+# sudo tar -xvf apache-tomcat-9.0.24.tar.gz
+# sudo mv apache-tomcat-9.0.24 tomcat9
 
 Note: If newer Apache Tomcat version available, make sure to replace the version number above with the latest version.
 
