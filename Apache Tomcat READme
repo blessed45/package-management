@@ -155,7 +155,7 @@ allow="127\.\d+\.\d+\.\d+|::1|0:0:0:0:0:0:0:1 |.*" />
 
 Then save the changes in the file and close it.
 
-Similarly, enable remote access to the Host Manager app in the file /usr/local/tomcat9/webapps/host-manager/META-INF/context.xml as shown above.
+Similarly, enable remote access to the Host Manager app in the file /opt/tomcat9/webapps/host-manager/META-INF/context.xml as shown above.
 
 Next, restart the tomcat service to apply the recent changes.
 
