@@ -18,8 +18,8 @@ sudo sed -i "/^[^#]*PasswordAuthentication[[:space:]]no/c\PasswordAuthentication
 # sudo sed -i 's/PasswordAuthentication no/PasswordAuthentication yes/g' /etc/ssh/sshd_config
 sudo service sshd restart
 cd /opt
-sudo yum -y install unzip wget git
-sudo yum install  java-11-openjdk-devel
+sudo yum -y install unzip wget git -y
+sudo yum install  java-17-openjdk-devel -y
 sudo wget https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-7.8.zip
 sudo unzip sonarqube-7.8.zip
 sudo rm -rf sonarqube-7.8.zip
