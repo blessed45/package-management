@@ -30,4 +30,9 @@ sh /opt/sonarqube/bin/linux-x86-64/sonar.sh start
 sh /opt/sonarqube/bin/linux-x86-64/sonar.sh status
 curl -v localhost:9000
 
+Always use this link to download the latest version of sonarqube
+
+https://www.sonarsource.com/products/sonarqube/downloads/
+
+
 
