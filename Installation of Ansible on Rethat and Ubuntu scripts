@@ -1,31 +1,30 @@
  
-Installing Ansible on Ubuntu
+# Installing Ansible on Ubuntu
 
- $ sudo adduser ansible 
-  $ echo "ansible ALL=(ALL) NOPASSWD:ALL" | sudo tee /etc/sudoers.d/ansible 
-  $ sudo su - ansible 
-  $ sudo apt-add-repository ppa:ansible/ansible 
-  $ sudo apt install ansible -y
-
-
- Ansible installation on REDHAT EC2
-
- $ sudo useradd ansible 
-  $ sudo hostname ansible 
-  $ echo "ansible ALL=(ALL) NOPASSWD:ALL" | sudo tee /etc/sudoers.d/ansible 
-  $ sudo su - ansible # Enable PassowrdLogin and assign password to ansible user 
-  $ sudo yum install python3 -y 
-  $ sudo alternatives --set python /usr/bin/python3 
-  $ sudo yum install python3-pip -y 
-  $ pip3 install ansible --user
+sudo adduser ansible 
+ echo "ansible ALL=(ALL) NOPASSWD:ALL" | sudo tee /etc/sudoers.d/ansible 
+ sudo su - ansible 
+ sudo apt-add-repository ppa:ansible/ansible 
+ sudo apt install ansible -y
 
 
-Script to add user, password and enable password 
+ # Ansible installation on REDHAT EC2
 
-authentication in remote node
+ sudo useradd ansible 
+ sudo hostname ansible 
+ echo "ansible ALL=(ALL) NOPASSWD:ALL" | sudo tee /etc/sudoers.d/ansible 
+ sudo su - ansible # Enable PassowrdLogin and assign password to ansible user 
+ sudo yum install python3 -y 
+ sudo alternatives --set python /usr/bin/python3 
+ sudo yum install python3-pip -y 
+ pip3 install ansible --user
+
+
+# Script to add user, password and enable password authentication in remote node
+ 
 #!/bin/bash
-$ sudo useradd -d /home/ansible -s /bin/bash -m ansible
-$ sudo echo "ansible:ansible" | chpasswd
-$ sudo echo "ansible  ALL=(ALL) NOPASSWD:ALL" | sudo tee /etc/sudoers.d/ansible
-$ sudo sed -i "/^[^#]*PasswordAuthentication[[:space:]]no/c\PasswordAuthentication yes" /etc/ssh/sshd_config
-$ sudo service sshd restart
+ sudo useradd -d /home/ansible -s /bin/bash -m ansible
+ sudo echo "ansible:ansible" | chpasswd
+ sudo echo "ansible  ALL=(ALL) NOPASSWD:ALL" | sudo tee /etc/sudoers.d/ansible
+ sudo sed -i "/^[^#]*PasswordAuthentication[[:space:]]no/c\PasswordAuthentication yes" /etc/ssh/sshd_config
+ sudo service sshd restart
