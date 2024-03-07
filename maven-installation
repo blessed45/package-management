@@ -268,7 +268,6 @@ sudo su - ec2-user
 cd /opt
 sudo yum install wget nano tree unzip git-all -y
 sudo yum install java-11 -y
-sudo yum install java-1.8 -y
 sudo wget https://dlcdn.apache.org/maven/maven-3/3.9.4/binaries/apache-maven-3.9.4-bin.zip
 sudo unzip apache-maven-3.9.4-bin.zip
 sudo rm -rf apache-maven-3.9.4-bin.zip
