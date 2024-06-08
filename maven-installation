@@ -15,7 +15,7 @@ Switch to ec2-user so as to enforce your new hostname with the command;
 
             sudo su - ec2-user
 
-For maven to run, we need some prerequities, and thse prerequities are;
+For maven to run, we need some prerequities, and these prerequities are;
 java, git, unzip, 
 
 you should note that for maven to run, java must be running,
@@ -150,12 +150,12 @@ Here, the url will be given to you by the company , for example ,you have been
 given the url bellow
 
                    
-        https://github.com/Landmark-Technologies/maven-standalone-application
+        https://github.com/Atangoinfotech/maven-standalone-application
 
 Since for you to do a build, you will have to clone the url, in this exapmle,
 you are going clone the above url by running the command 
 
-        git clone https://github.com/Landmark-Technologies/maven-standalone-application
+        git clone https://github.com/Atangoinfotech/maven-standalone-application
 
 After cloning this repository url, check if you have the code (file) that was cloned with 
 
