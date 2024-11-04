@@ -6,36 +6,36 @@
 
 
 
-sudo hostnamectl set-hostname tomcat9
+
 #sudo su - ec2-user
 /bin/bash
-
+sudo hostnamectl set-hostname tomcat10
 cd /opt
 sudo yum install git unzip wget -y
 sudo yum install java-1.8.0-openjdk-devel java-11-openjdk-devel -y
-sudo wget -c https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.86/bin/apache-tomcat-9.0.86.tar.gz
-sudo tar -xvf apache-tomcat-9.0.86.tar.gz
-sudo rm -rf apache-tomcat-9.0.86.tar.gz
-sudo mv apache-tomcat-9.0.86 tomcat9
-sudo chmod 777 -R /opt/tomcat9
-sudo chown ec2-user -R /opt/tomcat9
-sh /opt/tomcat9/bin/startup.sh   # Startup tomcat
-sudo ln -s /opt/tomcat9/bin/startup.sh /usr/bin/starttomcat # soft link to start tomcat from anyhwere
-sudo ln -s /opt/tomcat9/bin/shutdown.sh /usr/bin/stoptomcat
+sudo wget -c https://dlcdn.apache.org/tomcat/tomcat-10/v10.1.31/bin/apache-tomcat-10.1.31.tar.gz
+sudo tar -xvf apache-tomcat-10.1.31.tar.gz
+sudo rm -rf apache-tomcat-10.1.31.tar.gz
+sudo mv apache-tomcat-10.1.31 tomcat10
+sudo chmod 744 -R /opt/tomcat10
+sudo chown ec2-user -R /opt/tomcat10
+sh /opt/tomcat10/bin/startup.sh   # Startup tomcat
+sudo ln -s /opt/tomcat10/bin/startup.sh /usr/bin/starttomcat # soft link to start tomcat from anyhwere
+sudo ln -s /opt/tomcat10/bin/shutdown.sh /usr/bin/stoptomcat
 starttomcat
-sudo sed -i '/^  <Valve*/i <!--' /opt/tomcat9/webapps/manager/META-INF/context.xml
-sudo sed -i '/^         allow*/a -->' /opt/tomcat9/webapps/manager/META-INF/context.xml
+sudo sed -i '/^  <Valve*/i <!--' /opt/tomcat10/webapps/manager/META-INF/context.xml
+sudo sed -i '/^         allow*/a -->' /opt/tomcat10/webapps/manager/META-INF/context.xml
 sudo sed -i '/^<\/tomcat-users>/i <user username="admin" password="admin" roles="manager-gui,manager-script"\/>' /opt/tomcat9/conf/tomcat-users.xml
 
 #2. Start of tomcat configuration 
 
 #Tomcat server configuration:
 
-vim /opt/tomcat9/conf/server.xml   # if you want to change tomcat port number
+vim /opt/tomcat10/conf/server.xml   # if you want to change tomcat port number
 
-vi /opt/tomcat9/webapps/manager/META-INF/context.xml   # comment on it to enable external tomcat mgt access
+vi /opt/tomcat10/webapps/manager/META-INF/context.xml   # comment on it to enable external tomcat mgt access
 
-vi /opt/tomcat9/conf/tomcat-users.xml  # to add user
+vi /opt/tomcat10/conf/tomcat-users.xml  # to add user
 
 # Add user as bellow to enable user manage tomcat using GUI
 # Note, you can create as many users as you like and assign management access to them
