@@ -13,7 +13,7 @@ sudo hostnamectl set-hostname tomcat9
 cd /opt
 sudo yum install git unzip wget -y
 sudo yum install java-1.8.0-openjdk-devel java-11-openjdk-devel -y
-sudo wget https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.86/bin/apache-tomcat-9.0.86.tar.gz
+sudo wget -c https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.86/bin/apache-tomcat-9.0.86.tar.gz
 sudo tar -xvf apache-tomcat-9.0.86.tar.gz
 sudo rm -rf apache-tomcat-9.0.86.tar.gz
 sudo mv apache-tomcat-9.0.86 tomcat9
