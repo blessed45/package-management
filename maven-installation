@@ -242,7 +242,7 @@ that is the package for you
 
 rename it to app.jar by running
   
-             sudo mv [apllication] app,jar
+             sudo mv [apllication] app.jar
 
 you can now deploy the application by running the command
 
