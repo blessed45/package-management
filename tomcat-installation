@@ -8,7 +8,7 @@
 
 
 #sudo su - ec2-user
-/bin/bash
+#!/bin/bash
 sudo hostnamectl set-hostname tomcat10
 cd /opt
 sudo yum install git unzip wget -y
