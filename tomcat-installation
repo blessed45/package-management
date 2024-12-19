@@ -20,8 +20,8 @@ sudo mv apache-tomcat-9.0.97 tomcat9
 sudo chmod 744 -R /opt/tomcat9
 sudo chown ec2-user:ec2-user -R /opt/tomcat9
 sh /opt/tomcat10/bin/startup.sh   # Startup tomcat
-sudo ln -s /opt/tomcat10/bin/startup.sh /usr/bin/starttomcat # soft link to start tomcat from anyhwere
-sudo ln -s /opt/tomcat10/bin/shutdown.sh /usr/bin/stoptomcat
+sudo ln -s /opt/tomcat9/bin/startup.sh /usr/bin/starttomcat # soft link to start tomcat from anyhwere
+sudo ln -s /opt/tomcat9/bin/shutdown.sh /usr/bin/stoptomcat
 starttomcat
 sudo sed -i '/^  <Valve*/i <!--' /opt/tomcat10/webapps/manager/META-INF/context.xml
 sudo sed -i '/^         allow*/a -->' /opt/tomcat10/webapps/manager/META-INF/context.xml
