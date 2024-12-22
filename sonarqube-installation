@@ -29,6 +29,7 @@ sudo su - sonar
 sh /opt/sonarqube/bin/linux-x86-64/sonar.sh start 
 sh /opt/sonarqube/bin/linux-x86-64/sonar.sh status
 curl -v localhost:9000
+/bin/bash
 
 Always use this link to download the latest version of sonarqube
 
