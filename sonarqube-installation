@@ -6,11 +6,10 @@
 #As a good security practice, SonarQuber Server is not advised to run sonar service as a root user, 
 # create a new user called sonar and grant sudo access to manage sonar services as follows
 
+#!/bin/bash
 sudo useradd sonar
 sudo echo "sonar ALL=(ALL) NOPASSWD:ALL" | sudo tee /etc/sudoers.d/sonar
 sudo hostnamectl set-hostname sonar 
-sudo su - sonar
-
 
 sudo passwd sonar
 sudo sed -i "/^[^#]*PasswordAuthentication[[:space:]]no/c\PasswordAuthentication yes" /etc/ssh/sshd_config
@@ -26,9 +25,11 @@ sudo rm -rf sonarqube-7.8.zip
 sudo mv sonarqube-7.8 sonarqube
 sudo chown -R sonar:sonar /opt/sonarqube/
 sudo chmod -R 775 /opt/sonarqube/
+sudo su - sonar
 sh /opt/sonarqube/bin/linux-x86-64/sonar.sh start 
 sh /opt/sonarqube/bin/linux-x86-64/sonar.sh status
 curl -v localhost:9000
+/bin/bash
 
 Always use this link to download the latest version of sonarqube
 
