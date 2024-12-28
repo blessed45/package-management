@@ -18,8 +18,8 @@ sudo sed -i "/^[^#]*PasswordAuthentication[[:space:]]no/c\PasswordAuthentication
 # sudo sed -i 's/PasswordAuthentication no/PasswordAuthentication yes/g' /etc/ssh/sshd_config
 sudo service sshd restart
 cd /opt
-sudo yum -y install unzip wget git -y
-sudo yum install  java-11-openjdk-devel -y
+sudo yum install unzip wget git -y
+sudo yum install  java-11 -y
 sudo wget https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-7.8.zip
 sudo unzip sonarqube-7.8.zip
 sudo rm -rf sonarqube-7.8.zip
@@ -34,6 +34,31 @@ curl -v localhost:9000
 Always use this link to download the latest version of sonarqube
 
 https://www.sonarsource.com/products/sonarqube/downloads/
+
+
+
+
+
+
+#!/bin/bash
+sudo passwd sonar
+sudo sed -i "/^[^#]*PasswordAuthentication[[:space:]]no/c\PasswordAuthentication yes" /etc/ssh/sshd_config
+# Or use the below command also
+# sudo sed -i 's/PasswordAuthentication no/PasswordAuthentication yes/g' /etc/ssh/sshd_config
+sudo service sshd restart
+cd /opt
+sudo yum install unzip wget git -y
+sudo yum install  java-17 -y
+sudo wget https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-24.12.0.100206.zip
+sudo unzip sonarqube-24.12.0.100206.zip
+sudo rm -rf sonarqube-24.12.0.100206.zip
+sudo mv sonarqube-24.12.0.100206 sonarqube
+sudo chown -R sonar:sonar /opt/sonarqube/
+sudo chmod -R 775 /opt/sonarqube/
+sh /opt/sonarqube/bin/linux-x86-64/sonar.sh start 
+sh /opt/sonarqube/bin/linux-x86-64/sonar.sh status
+curl -v localhost:9000
+/bin/bash
 
 
 
