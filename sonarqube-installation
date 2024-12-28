@@ -41,7 +41,10 @@ https://www.sonarsource.com/products/sonarqube/downloads/
 
 
 #!/bin/bash
-sudo passwd sonar
+sudo hostnamectl set-hostname sonar
+sudo useradd sonar
+sudo echo "sonar ALL=(ALL) NOPASSWD:ALL" | sudo tee /etc/sudoers.d/sonar
+sudo echo "sonar:admin123" | chpasswd
 sudo sed -i "/^[^#]*PasswordAuthentication[[:space:]]no/c\PasswordAuthentication yes" /etc/ssh/sshd_config
 # Or use the below command also
 # sudo sed -i 's/PasswordAuthentication no/PasswordAuthentication yes/g' /etc/ssh/sshd_config
@@ -55,8 +58,8 @@ sudo rm -rf sonarqube-24.12.0.100206.zip
 sudo mv sonarqube-24.12.0.100206 sonarqube
 sudo chown -R sonar:sonar /opt/sonarqube/
 sudo chmod -R 775 /opt/sonarqube/
-sh /opt/sonarqube/bin/linux-x86-64/sonar.sh start 
-sh /opt/sonarqube/bin/linux-x86-64/sonar.sh status
+sudo su - sonar -c sh /opt/sonarqube/bin/linux-x86-64/sonar.sh start 
+sudo su - sonar -c sh /opt/sonarqube/bin/linux-x86-64/sonar.sh status
 curl -v localhost:9000
 /bin/bash
 
