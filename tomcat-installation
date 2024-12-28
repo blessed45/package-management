@@ -6,10 +6,11 @@
 
 
 
-sudo hostnamectl set-hostname tomcat9
+
 #sudo su - ec2-user
 
 #!/bin/bash
+sudo hostnamectl set-hostname tomcat9
 cd /opt
 sudo yum install git unzip wget -y
 sudo yum install java-1.8.0-openjdk-devel java-11-openjdk-devel
