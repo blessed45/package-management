@@ -64,4 +64,26 @@ curl -v localhost:9000
 /bin/bash
 
 
+## Postgres database installation 
+# UBUNTU
+sudo apt update && sudo apt upgrade -y
+sudo apt install postgresql postgresql-contrib -y
+sudo systemctl enable postgresql
+sudo systemctl start postgresql
+sudo passwd postgres
+sudo su - postgres
+createuser sonar
+psql
+
+# REDHAT
+sudo yum update -y 
+sudo yum install postgresql-server postgresql-contrib -y
+sudo systemctl enable postgresql
+sudo systemctl start postgresql
+sudo passwd postgres
+sudo su - postgres
+createuser sonar
+psql
+
+
 
