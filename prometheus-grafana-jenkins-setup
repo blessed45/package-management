@@ -152,3 +152,20 @@ server url. Edit it with your prometheus server url.
 Scroll down and click on save and test botton.
 
 Go back by clicking on backward key and you see that the data source has been added.
+
+sudo hostnamectl set-hostname prometheus-grafana
+/bin/bash
+  sudo vi install.sh
+    2  sudo sh install.sh
+    3  clear
+    4  docker run --name prometheus -d-p 9090:9090 prom/promethus
+    5  docker run --name prometheus -d -p 9090:9090 prom/promethus
+    6  sudo docker run --name prometheus -d -p 9090:9090 prom/promethus
+    7  sudo docker run --name prometheus -d -p 9090:9090 prom/prometheus
+    8  sudo docker run --name grafana -d -p 3000:3000 grafana/grafana
+    9  docker exe -it prometheus /bin/sh
+   10  docker exec -it prometheus /bin/sh
+   11  sudo docker exec -it prometheus /bin/sh
+   12  sudo docker restart prometheus
+   13  sudo docker ps -a
+   14  curl ifconfig.me
