@@ -162,6 +162,11 @@ sudo hostnamectl set-hostname prometheus-grafana
     4  sudo docker run --name grafana -d -p 3000:3000 grafana/grafana
     
    5  sudo docker exec -it prometheus /bin/sh
+     cd /etc/premetheus
+ls
+vi prometheus.yml
+exit
+
    6 sudo docker restart prometheus
    7  sudo docker ps -a
    8  curl ifconfig.me
