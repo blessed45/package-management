@@ -1,0 +1,9 @@
+Open https://github.com/Shopify/kubeaudit/release on your browser.
+Copy link of latest version
+Use wget to download
+Extract the tar file
+  tar -xvzf kubeaudit_linux_amd64.tar.gz # edit with the correct version
+# move the kubeaudit to the user local bin directory
+   sudo mv kubeaudit /usr/local/bin
+# To scan the cluster, run
+     kubeaudit all  
