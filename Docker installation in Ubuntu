@@ -6,3 +6,8 @@ sudo service docker start
 sudo docker info 
 sudo usermod -aG docker ubuntu
 sudo su - ubuntu 
+
+# Run the below command to allow all users in docker to run
+  docker commands
+sudo chmod 666 /var/run/docker.sock
+
