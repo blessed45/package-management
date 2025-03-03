@@ -1,0 +1,13 @@
+#!/bin/bash
+# Author: Prof Atanga
+# Script to install trivy on ubuntu
+# Install trivy in jenkins to scan code vulnerability
+# Script need root access
+
+sudo apt update && sudo apt upgrade
+sudo apt-get install wget apt-transport-https gnupg lsb-release -y
+sudo wget -qO - https://aquasecurity.github.io/trivy-repo/deb/public.key | sudo apt-key add -
+echo deb https://aquasecurity.github.io/trivy-repo/deb $(lsb_release -sc) main | sudo tee -a /etc/apt/sources.list.d/trivy.list
+sudo apt-get update
+sudo apt-get install trivy -y
+trivy --version
