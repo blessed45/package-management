@@ -12,7 +12,7 @@ e.g
 
 Use wget to download it.
 unzip the downloaded tar file.
-dleete the tar file after unzip
+delete the tar file after unzip
 
 rename the unzip file to prometheus
  
