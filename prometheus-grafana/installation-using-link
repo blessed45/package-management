@@ -8,7 +8,7 @@ Type prometheus.io/download
 
 Copy one of the tar files
 e.g 
-   prometheus.2.51.0rc.0.linux-amd64.tar.gz
+   https://github.com/prometheus/prometheus/releases/download/v3.2.1/prometheus-3.2.1.linux-amd64.tar.gz
 
 Use wget to download it.
 unzip the downloaded tar file.
@@ -62,7 +62,7 @@ copy the link to the linux package
 
 user wget to download
 
-  wget blackbox_exporter-0.24.0.linux-amd64.tar.gz
+  wget https://github.com/prometheus/blackbox_exporter/releases/download/v0.26.0/blackbox_exporter-0.26.0.linux-amd64.tar.gz
 
 Extract the package after downloading
 Delete the tar file
@@ -128,7 +128,8 @@ Search for node_exporter
 
 Copy the link and download it in jenkins using wget.
 
-     wget node_exporter-1.7.0.linux-amd64.tar.gz
+     wget https://github.com/prometheus/node_exporter/releases/download/v1.9.0/node_exporter-1.9.0.linux-amd64.tar.gz
+
 After downloading it, unzip the file.
 Rename the extracted file to node_exporter.
 Delete the tar file
