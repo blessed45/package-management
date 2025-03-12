@@ -13,10 +13,11 @@ e.g
 Use wget to download it.
 unzip the downloaded tar file.
 delete the tar file after unzip
-
-rename the unzip file to prometheus
  
- cd prometheus
+ cd prometheus-3.2.1.linux-amd64
+
+mkdir ~/prometheus-3.2.1.linux-amd64/data
+ 
  ls
 
  execute the prometheus executable file to start prometheus.
