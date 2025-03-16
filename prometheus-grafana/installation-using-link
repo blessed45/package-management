@@ -8,7 +8,7 @@ Type prometheus.io/download
 
 Copy one of the tar files
 e.g 
-   https://github.com/prometheus/prometheus/releases/download/v3.2.1/prometheus-3.2.1.linux-amd64.tar.gz
+  sudo wget https://github.com/prometheus/prometheus/releases/download/v3.2.1/prometheus-3.2.1.linux-amd64.tar.gz
 
 Use wget to download it.
 unzip the downloaded tar file.
