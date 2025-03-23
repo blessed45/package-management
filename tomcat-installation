@@ -7,7 +7,7 @@
 
 
 
-sudo hostnamectl set-hostname tomcat9
+sudo hostnamectl set-hostname tomcat10
 #sudo su - ec2-user
 /bin/bash
 #!/bin/bash
