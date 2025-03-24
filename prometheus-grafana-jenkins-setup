@@ -153,20 +153,22 @@ Scroll down and click on save and test botton.
 
 Go back by clicking on backward key and you see that the data source has been added.
 
+run these commands
+
 sudo hostnamectl set-hostname prometheus-grafana
 /bin/bash
   sudo vi install.sh
     1  sudo sh install.sh
     
-    3  sudo docker run --name prometheus -d -p 9090:9090 prom/prometheus
-    4  sudo docker run --name grafana -d -p 3000:3000 grafana/grafana
+    2  sudo docker run --name prometheus -d -p 9090:9090 prom/prometheus
+    3 sudo docker run --name grafana -d -p 3000:3000 grafana/grafana
     
-   5  sudo docker exec -it prometheus /bin/sh
+   4 sudo docker exec -it prometheus /bin/sh
      cd /etc/prometheus
-ls
-vi prometheus.yml
-exit
+   5 ls
+    6 vi prometheus.yml
+   7 type exit  to get out from the  file 
 
-   6 sudo docker restart prometheus
-   7  sudo docker ps -a
-   8  curl ifconfig.me
+   8 sudo docker restart prometheus
+   9  sudo docker ps -a
+   10 curl ifconfig.me
