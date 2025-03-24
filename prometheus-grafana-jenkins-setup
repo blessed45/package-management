@@ -157,7 +157,7 @@ sudo hostnamectl set-hostname prometheus-grafana
 /bin/bash
   sudo vi install.sh
     1  sudo sh install.sh
-    2  sudo docker run --name prometheus -d -p 9090:9090 prom/promethus
+    
     3  sudo docker run --name prometheus -d -p 9090:9090 prom/prometheus
     4  sudo docker run --name grafana -d -p 3000:3000 grafana/grafana
     
