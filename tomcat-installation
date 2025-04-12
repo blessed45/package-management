@@ -18,7 +18,7 @@ sudo hostnamectl set-hostname tomcat10
 cd /opt
 sudo yum install git unzip wget -y
 sudo yum install java-11 -y
-sudo wget https://dlcdn.apache.org/tomcat/tomcat-10/v10.1.40/bin/apache-tomcat-10.1.340.tar.gz
+sudo wget https://dlcdn.apache.org/tomcat/tomcat-10/v10.1.40/bin/apache-tomcat-10.1.40.tar.gz
 sudo tar -xvf apache-tomcat-10.1.40.tar.gz
 sudo rm -rf apache-tomcat-10.1.40.tar.gz
 sudo mv apache-tomcat-10.1.40 tomcat10
