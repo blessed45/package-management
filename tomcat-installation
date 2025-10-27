@@ -19,10 +19,10 @@ sudo hostnamectl set-hostname tomcat9
 cd /opt
 sudo yum install git unzip wget -y
 sudo yum install java-11 -y
-sudo wget -c https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.109/bin/apache-tomcat-9.0.109.tar.gz
-sudo tar -xvf apache-tomcat-9.0.109.tar.gz
-sudo rm -rf apache-tomcat-9.0.109.tar.gz
-sudo mv apache-tomcat-9.0.109 tomcat9
+sudo wget -c https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.111/bin/apache-tomcat-9.0.111.tar.gz
+sudo tar -xvf apache-tomcat-9.0.111.tar.gz
+sudo rm -rf apache-tomcat-9.0.111.tar.gz
+sudo mv apache-tomcat-9.0.111 tomcat9
 sudo chmod 777 -R /opt/tomcat9
 sudo chown ec2-user -R /opt/tomcat9
 sh /opt/tomcat9/bin/startup.sh   # Startup tomcat
@@ -88,6 +88,7 @@ sudo systemctl start crond.service
 sudo systemctl enable crond.service
 echo "@reboot  starttomcat" > /opt/tomcat9/crontom
 crontab < /opt/tomcat9/crontom
+
 
 
 
